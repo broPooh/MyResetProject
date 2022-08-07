@@ -9,23 +9,33 @@
 /* Begin PBXBuildFile section */
 		1B45AF76289E8D8000BB79A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B45AF75289E8D8000BB79A3 /* AppDelegate.swift */; };
 		1B45AF78289E8D8000BB79A3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B45AF77289E8D8000BB79A3 /* SceneDelegate.swift */; };
-		1B45AF7A289E8D8000BB79A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B45AF79289E8D8000BB79A3 /* ViewController.swift */; };
-		1B45AF7D289E8D8000BB79A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B45AF7B289E8D8000BB79A3 /* Main.storyboard */; };
 		1B45AF80289E8D8000BB79A3 /* MyResetProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1B45AF7E289E8D8000BB79A3 /* MyResetProject.xcdatamodeld */; };
 		1B45AF82289E8D8400BB79A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B45AF81289E8D8400BB79A3 /* Assets.xcassets */; };
 		1B45AF85289E8D8400BB79A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B45AF83289E8D8400BB79A3 /* LaunchScreen.storyboard */; };
+		1B45AF8D289E8D9C00BB79A3 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 1B45AF8C289E8D9C00BB79A3 /* .gitignore */; };
+		1B45AF91289E8E3A00BB79A3 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 1B45AF90289E8E3A00BB79A3 /* Realm */; };
+		1B45AF93289E8E3A00BB79A3 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1B45AF92289E8E3A00BB79A3 /* RealmSwift */; };
+		1B45AF96289E8E4E00BB79A3 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 1B45AF95289E8E4E00BB79A3 /* JGProgressHUD */; };
+		1B45AF99289E8E6300BB79A3 /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1B45AF98289E8E6300BB79A3 /* RxAlamofire */; };
+		1B45AF9C289E8E7600BB79A3 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1B45AF9B289E8E7600BB79A3 /* Kingfisher */; };
+		1B45AF9F289E8E8B00BB79A3 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 1B45AF9E289E8E8B00BB79A3 /* Toast */; };
+		1B45AFA2289E8EA800BB79A3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1B45AFA1289E8EA800BB79A3 /* SnapKit */; };
+		1B45AFA5289E95D500BB79A3 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B45AFA4289E95D500BB79A3 /* Appearance.swift */; };
+		1B45AFA7289E95EA00BB79A3 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B45AFA6289E95EA00BB79A3 /* Config.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1B45AF72289E8D8000BB79A3 /* MyResetProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyResetProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B45AF75289E8D8000BB79A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B45AF77289E8D8000BB79A3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1B45AF79289E8D8000BB79A3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		1B45AF7C289E8D8000BB79A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1B45AF7F289E8D8000BB79A3 /* MyResetProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyResetProject.xcdatamodel; sourceTree = "<group>"; };
 		1B45AF81289E8D8400BB79A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B45AF84289E8D8400BB79A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B45AF86289E8D8400BB79A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B45AF8C289E8D9C00BB79A3 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		1B45AF8E289E8DC700BB79A3 /* MyAPIConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = MyAPIConfig.xcconfig; sourceTree = "<group>"; };
+		1B45AFA4289E95D500BB79A3 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		1B45AFA6289E95EA00BB79A3 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +43,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B45AF9F289E8E8B00BB79A3 /* Toast in Frameworks */,
+				1B45AF93289E8E3A00BB79A3 /* RealmSwift in Frameworks */,
+				1B45AF99289E8E6300BB79A3 /* RxAlamofire in Frameworks */,
+				1B45AFA2289E8EA800BB79A3 /* SnapKit in Frameworks */,
+				1B45AF96289E8E4E00BB79A3 /* JGProgressHUD in Frameworks */,
+				1B45AF91289E8E3A00BB79A3 /* Realm in Frameworks */,
+				1B45AF9C289E8E7600BB79A3 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +59,7 @@
 		1B45AF69289E8D8000BB79A3 = {
 			isa = PBXGroup;
 			children = (
+				1B45AF8C289E8D9C00BB79A3 /* .gitignore */,
 				1B45AF74289E8D8000BB79A3 /* MyResetProject */,
 				1B45AF73289E8D8000BB79A3 /* Products */,
 			);
@@ -58,16 +76,65 @@
 		1B45AF74289E8D8000BB79A3 /* MyResetProject */ = {
 			isa = PBXGroup;
 			children = (
+				1BEFAF44289F4CF900BF28E9 /* Network */,
+				1B45AFA3289E95C600BB79A3 /* Common */,
+				1BEFAF43289F4CE700BF28E9 /* Database */,
+				1BEFAF47289F4D5800BF28E9 /* Enums */,
+				1BEFAF45289F4D0900BF28E9 /* Extensions */,
 				1B45AF75289E8D8000BB79A3 /* AppDelegate.swift */,
 				1B45AF77289E8D8000BB79A3 /* SceneDelegate.swift */,
-				1B45AF79289E8D8000BB79A3 /* ViewController.swift */,
-				1B45AF7B289E8D8000BB79A3 /* Main.storyboard */,
 				1B45AF81289E8D8400BB79A3 /* Assets.xcassets */,
 				1B45AF83289E8D8400BB79A3 /* LaunchScreen.storyboard */,
 				1B45AF86289E8D8400BB79A3 /* Info.plist */,
 				1B45AF7E289E8D8000BB79A3 /* MyResetProject.xcdatamodeld */,
+				1B45AF8E289E8DC700BB79A3 /* MyAPIConfig.xcconfig */,
 			);
 			path = MyResetProject;
+			sourceTree = "<group>";
+		};
+		1B45AFA3289E95C600BB79A3 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				1BEFAF46289F4D2000BF28E9 /* Base */,
+				1B45AFA4289E95D500BB79A3 /* Appearance.swift */,
+				1B45AFA6289E95EA00BB79A3 /* Config.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		1BEFAF43289F4CE700BF28E9 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		1BEFAF44289F4CF900BF28E9 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		1BEFAF45289F4D0900BF28E9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1BEFAF46289F4D2000BF28E9 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		1BEFAF47289F4D5800BF28E9 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,6 +153,15 @@
 			dependencies = (
 			);
 			name = MyResetProject;
+			packageProductDependencies = (
+				1B45AF90289E8E3A00BB79A3 /* Realm */,
+				1B45AF92289E8E3A00BB79A3 /* RealmSwift */,
+				1B45AF95289E8E4E00BB79A3 /* JGProgressHUD */,
+				1B45AF98289E8E6300BB79A3 /* RxAlamofire */,
+				1B45AF9B289E8E7600BB79A3 /* Kingfisher */,
+				1B45AF9E289E8E8B00BB79A3 /* Toast */,
+				1B45AFA1289E8EA800BB79A3 /* SnapKit */,
+			);
 			productName = MyResetProject;
 			productReference = 1B45AF72289E8D8000BB79A3 /* MyResetProject.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +190,14 @@
 				Base,
 			);
 			mainGroup = 1B45AF69289E8D8000BB79A3;
+			packageReferences = (
+				1B45AF8F289E8E3A00BB79A3 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				1B45AF94289E8E4E00BB79A3 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
+				1B45AF97289E8E6300BB79A3 /* XCRemoteSwiftPackageReference "RxAlamofire" */,
+				1B45AF9A289E8E7600BB79A3 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				1B45AF9D289E8E8B00BB79A3 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				1B45AFA0289E8EA800BB79A3 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 1B45AF73289E8D8000BB79A3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -128,9 +212,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B45AF8D289E8D9C00BB79A3 /* .gitignore in Resources */,
 				1B45AF85289E8D8400BB79A3 /* LaunchScreen.storyboard in Resources */,
 				1B45AF82289E8D8400BB79A3 /* Assets.xcassets in Resources */,
-				1B45AF7D289E8D8000BB79A3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,24 +225,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B45AF7A289E8D8000BB79A3 /* ViewController.swift in Sources */,
+				1B45AFA5289E95D500BB79A3 /* Appearance.swift in Sources */,
 				1B45AF76289E8D8000BB79A3 /* AppDelegate.swift in Sources */,
 				1B45AF78289E8D8000BB79A3 /* SceneDelegate.swift in Sources */,
 				1B45AF80289E8D8000BB79A3 /* MyResetProject.xcdatamodeld in Sources */,
+				1B45AFA7289E95EA00BB79A3 /* Config.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		1B45AF7B289E8D8000BB79A3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1B45AF7C289E8D8000BB79A3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1B45AF83289E8D8400BB79A3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -172,6 +249,7 @@
 /* Begin XCBuildConfiguration section */
 		1B45AF87289E8D8400BB79A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B45AF8E289E8DC700BB79A3 /* MyAPIConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -232,6 +310,7 @@
 		};
 		1B45AF88289E8D8400BB79A3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B45AF8E289E8DC700BB79A3 /* MyAPIConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -286,6 +365,7 @@
 		};
 		1B45AF8A289E8D8400BB79A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B45AF8E289E8DC700BB79A3 /* MyAPIConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -295,7 +375,6 @@
 				INFOPLIST_FILE = MyResetProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -313,6 +392,7 @@
 		};
 		1B45AF8B289E8D8400BB79A3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B45AF8E289E8DC700BB79A3 /* MyAPIConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -322,7 +402,6 @@
 				INFOPLIST_FILE = MyResetProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -360,6 +439,95 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1B45AF8F289E8E3A00BB79A3 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		1B45AF94289E8E4E00BB79A3 /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		1B45AF97289E8E6300BB79A3 /* XCRemoteSwiftPackageReference "RxAlamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxAlamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		1B45AF9A289E8E7600BB79A3 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		1B45AF9D289E8E8B00BB79A3 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		1B45AFA0289E8EA800BB79A3 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1B45AF90289E8E3A00BB79A3 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B45AF8F289E8E3A00BB79A3 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		1B45AF92289E8E3A00BB79A3 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B45AF8F289E8E3A00BB79A3 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		1B45AF95289E8E4E00BB79A3 /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B45AF94289E8E4E00BB79A3 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
+		};
+		1B45AF98289E8E6300BB79A3 /* RxAlamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B45AF97289E8E6300BB79A3 /* XCRemoteSwiftPackageReference "RxAlamofire" */;
+			productName = RxAlamofire;
+		};
+		1B45AF9B289E8E7600BB79A3 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B45AF9A289E8E7600BB79A3 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		1B45AF9E289E8E8B00BB79A3 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B45AF9D289E8E8B00BB79A3 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+		1B45AFA1289E8EA800BB79A3 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B45AFA0289E8EA800BB79A3 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		1B45AF7E289E8D8000BB79A3 /* MyResetProject.xcdatamodeld */ = {
