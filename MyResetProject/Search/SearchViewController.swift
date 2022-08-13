@@ -230,7 +230,17 @@ extension SearchViewController: UITableViewDataSourcePrefetching {
                 print("불렸니")
                 
                 let start = viewModel.startPage.value + 10
-                viewModel.fetchMovie(start: start)
+                
+                searchView.searchBar.rx.text.orEmpty
+                    .filter { $0 != "" }
+                    .do(onNext: { [unowned self] _ in
+                        print("test1")
+                        self.viewModel.isLoading.accept(true)
+                    })
+                    .flatMap { text -> Single<MovieResult> in
+                        print("test2")
+                        return APIManager.shared.searchMovieSingle(query: text, start: start)
+                    }
                     .subscribe { [unowned self] event in
                         switch event {
                         case .next(let movieResult):
@@ -241,8 +251,9 @@ extension SearchViewController: UITableViewDataSourcePrefetching {
                             self.viewModel.movieResult.accept(movieResult)
 
                             let array = movieResult.items.map { $0.convertDisplayItem() }
-
-                            self.viewModel.movieArray.accept(array)
+                            
+                            let updateArray = self.viewModel.movieArray.value + array
+                            self.viewModel.movieArray.accept(updateArray)
                         case .error(let myError):
                             self.viewModel.isLoading.accept(false)
                             print(myError)
@@ -251,17 +262,6 @@ extension SearchViewController: UITableViewDataSourcePrefetching {
                         }
                     }
                     .disposed(by: disposeBag)
-//                    .subscribe { [unowned self] event in
-//                        switch event {
-//                        case .success(let displayMovies):
-//                            self.viewModel.isLoading.accept(false)
-//                            self.viewModel.movieArray.accept(displayMovies)
-//                        case .failure(let myError):
-//                            self.viewModel.isLoading.accept(false)
-//                            print(myError)
-//                        }
-//                    }
-//                    .disposed(by: disposeBag)
 
             }
         }

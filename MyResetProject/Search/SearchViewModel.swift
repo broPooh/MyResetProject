@@ -32,36 +32,9 @@ final class SearchViewModel: CommonViewModel {
             .flatMap { text -> Single<MovieResult> in
                 return APIManager.shared.searchMovieSingle(query: text, start: start)
             }
-        
-        
-        
-//            .map { [unowned self] movieResult -> [DisplayMovie] in
-//                self.viewModel.startPage.accept(movieResult.start ?? 1)
-//                self.viewModel.totalCount.accept(movieResult.total ?? 1)
-//
-//                let array = movieResult.items.map { movie in
-//                    movie.convertDisplayItem()
-//                }
-//               return array
-//            }
-            
+                    
     }
-    
-    func test() {
         
-//        fetchMovie(start: 10)
-//            .subscribe { [weak self] event in
-//                switch event {
-//                case .success(let movieArray2):
-//                    self?.movieArray.accept(movieArray2)
-//                case .failure(let myError):
-//                    print(myError)
-//                }
-//            }
-//            .disposed(by: disposeBag)
-                
-    }
-    
     func checkFavoriteMovie(movie: DisplayMovie) -> Bool {
         if movie.favorite {
             databaesManager.delete(movie: movie.convertRealmItem())
