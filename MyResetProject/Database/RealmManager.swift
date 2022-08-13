@@ -20,9 +20,9 @@ class RealmManager: DataBaseManagerType {
     private lazy var storage = BehaviorSubject<[MovieItem]>(value: list)
     
     @discardableResult
-    func createMovie(movie: Movie) -> Observable<MovieItem> {
+    func createMovie(movie: DisplayMovie) -> Observable<MovieItem> {
         let localRealm = try! Realm()
-        let movieItem = MovieItem.convertMovie(movie: movie)
+        let movieItem = movie.convertRealmItem()
         
         do {
             try localRealm.write {

@@ -29,6 +29,7 @@
 		1B0F788028A6570700AC2605 /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1B0F787F28A6570700AC2605 /* RxAlamofire */; };
 		1B0F788228A6579B00AC2605 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0F788128A6579B00AC2605 /* SearchViewModel.swift */; };
 		1B0F788428A657D700AC2605 /* CommonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0F788328A657D700AC2605 /* CommonViewModel.swift */; };
+		1B0F788628A6972700AC2605 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0F788528A6972700AC2605 /* SearchViewController.swift */; };
 		1B45AF76289E8D8000BB79A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B45AF75289E8D8000BB79A3 /* AppDelegate.swift */; };
 		1B45AF78289E8D8000BB79A3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B45AF77289E8D8000BB79A3 /* SceneDelegate.swift */; };
 		1B45AF80289E8D8000BB79A3 /* MyResetProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1B45AF7E289E8D8000BB79A3 /* MyResetProject.xcdatamodeld */; };
@@ -43,6 +44,9 @@
 		1B45AFA2289E8EA800BB79A3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1B45AFA1289E8EA800BB79A3 /* SnapKit */; };
 		1B45AFA5289E95D500BB79A3 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B45AFA4289E95D500BB79A3 /* Appearance.swift */; };
 		1B45AFA7289E95EA00BB79A3 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B45AFA6289E95EA00BB79A3 /* Config.swift */; };
+		1BFA763328A738A6007D3690 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFA763228A738A6007D3690 /* SearchView.swift */; };
+		1BFA763528A738B9007D3690 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFA763428A738B9007D3690 /* SearchTableViewCell.swift */; };
+		1BFA763928A75C39007D3690 /* URLSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFA763828A75C39007D3690 /* URLSession+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +69,7 @@
 		1B0F787728A6546700AC2605 /* APIEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEnums.swift; sourceTree = "<group>"; };
 		1B0F788128A6579B00AC2605 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		1B0F788328A657D700AC2605 /* CommonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewModel.swift; sourceTree = "<group>"; };
+		1B0F788528A6972700AC2605 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		1B45AF72289E8D8000BB79A3 /* MyResetProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyResetProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B45AF75289E8D8000BB79A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B45AF77289E8D8000BB79A3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +81,9 @@
 		1B45AF8E289E8DC700BB79A3 /* MyAPIConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = MyAPIConfig.xcconfig; sourceTree = "<group>"; };
 		1B45AFA4289E95D500BB79A3 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		1B45AFA6289E95EA00BB79A3 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		1BFA763228A738A6007D3690 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		1BFA763428A738B9007D3690 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		1BFA763828A75C39007D3690 /* URLSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +147,7 @@
 				1B45AF86289E8D8400BB79A3 /* Info.plist */,
 				1B45AF7E289E8D8000BB79A3 /* MyResetProject.xcdatamodeld */,
 				1B45AF8E289E8DC700BB79A3 /* MyAPIConfig.xcconfig */,
-				1B0F788128A6579B00AC2605 /* SearchViewModel.swift */,
+				1BFA763628A73A15007D3690 /* Search */,
 			);
 			path = MyResetProject;
 			sourceTree = "<group>";
@@ -185,6 +193,7 @@
 				1B0F785E28A5326400AC2605 /* String+Extension.swift */,
 				1B0F786028A5328200AC2605 /* UIImageView+Extension.swift */,
 				1B0F786228A532BC00AC2605 /* URL+Extension.swift */,
+				1BFA763828A75C39007D3690 /* URLSession+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -204,6 +213,25 @@
 				1B0F787728A6546700AC2605 /* APIEnums.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		1BFA763628A73A15007D3690 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				1BFA763728A73A1F007D3690 /* View */,
+				1B0F788128A6579B00AC2605 /* SearchViewModel.swift */,
+				1B0F788528A6972700AC2605 /* SearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		1BFA763728A73A1F007D3690 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1BFA763228A738A6007D3690 /* SearchView.swift */,
+				1BFA763428A738B9007D3690 /* SearchTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,6 +333,7 @@
 				1B0F786528A5CDE500AC2605 /* DataBaseManagerType.swift in Sources */,
 				1B0F787628A6545700AC2605 /* APIManager.swift in Sources */,
 				1B0F786328A532BC00AC2605 /* URL+Extension.swift in Sources */,
+				1BFA763328A738A6007D3690 /* SearchView.swift in Sources */,
 				1B0F786728A5CE1100AC2605 /* Model.swift in Sources */,
 				1B0F785F28A5326400AC2605 /* String+Extension.swift in Sources */,
 				1B45AF78289E8D8000BB79A3 /* SceneDelegate.swift in Sources */,
@@ -312,10 +341,13 @@
 				1B0F787228A64DE800AC2605 /* RealmManager.swift in Sources */,
 				1B0F788428A657D700AC2605 /* CommonViewModel.swift in Sources */,
 				1B0F785928A5190800AC2605 /* ImageEnum.swift in Sources */,
+				1BFA763928A75C39007D3690 /* URLSession+Extension.swift in Sources */,
+				1B0F788628A6972700AC2605 /* SearchViewController.swift in Sources */,
 				1B0F788228A6579B00AC2605 /* SearchViewModel.swift in Sources */,
 				1B0F785D28A5325300AC2605 /* UITableViewCell+Extension.swift in Sources */,
 				1B0F787428A6543500AC2605 /* Endpoint.swift in Sources */,
 				1B0F786E28A64B6F00AC2605 /* RealmModel.swift in Sources */,
+				1BFA763528A738B9007D3690 /* SearchTableViewCell.swift in Sources */,
 				1B0F787828A6546700AC2605 /* APIEnums.swift in Sources */,
 				1B45AF80289E8D8000BB79A3 /* MyResetProject.xcdatamodeld in Sources */,
 				1B0F785528A5185D00AC2605 /* UIViewController+Extension.swift in Sources */,
@@ -462,6 +494,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2EZ5QWFYX2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyResetProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -490,6 +523,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2EZ5QWFYX2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyResetProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -17,7 +17,7 @@ enum DatabaseError: Error {
 protocol DataBaseManagerType {
 
     @discardableResult
-    func createMovie(movie: Movie) -> Observable<MovieItem>
+    func createMovie(movie: DisplayMovie) -> Observable<MovieItem>
     
     @discardableResult
     func movieList() -> Observable<[MovieItem]>
