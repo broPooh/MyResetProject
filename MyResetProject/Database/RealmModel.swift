@@ -33,25 +33,6 @@ class MovieItem: Object {
     }
     
     
-    static func convertMovie(movie: Movie) -> MovieItem {
-        let movieItem = MovieItem()
-        movieItem.title = movie.title?.htmlEscaped ?? ""
-        movieItem.subtitle = movie.subtitle?.htmlEscaped ?? ""
-        movieItem.image = movie.image ?? ""
-        movieItem.actor = movie.actor ?? ""
-        movieItem.userRating = movie.userRating ?? ""
-        movieItem.pubDate = movie.pubDate ?? ""
-        movieItem.director = movie.director ?? ""
-        movieItem.link = movie.link ?? ""
-        
-        return movieItem
-        
-    }
-    
-    static func convertMovieItem(movieItem: MovieItem) -> Movie {
-        return Movie(subtitle: movieItem.subtitle, image: movieItem.image, title: movieItem.title, actor: movieItem.actor, userRating: movieItem.userRating, pubDate: movieItem.pubDate, director: movieItem.director, link: movieItem.link)
-    }
-    
     static func updateMovie(oldMovie:MovieItem, updateMovie: MovieItem) -> MovieItem {
         oldMovie.title = updateMovie.title
         oldMovie.subtitle = updateMovie.subtitle

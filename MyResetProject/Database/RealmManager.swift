@@ -90,11 +90,11 @@ class RealmManager: DataBaseManagerType {
     }
     
     @discardableResult
-    func delete(movie: Movie) -> Observable<MovieItem> {
+    func delete(movie: DisplayMovie) -> Observable<MovieItem> {
         let localRealm = try! Realm()
         do {
             if let deleteItem = localRealm.objects(MovieItem.self).where({
-                $0.title == movie.title ?? "" || $0.pubDate == movie.pubDate ?? ""
+                $0.title == movie.title || $0.pubDate == movie.pubDate
             }).first {
                 try localRealm.write {
                         localRealm.delete(deleteItem)

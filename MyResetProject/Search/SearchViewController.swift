@@ -78,24 +78,26 @@ class SearchViewController: UIViewController {
     }
     
     @objc func favoriteButtonDidTap() {
-        
+        let favoriteView = FavoriteView()
+        let favoriteViewModel = FavoriteViewModel(databaesManager: RealmManager.shared)
+        let viewController = FavoriteViewController(view: favoriteView, viewModel: favoriteViewModel)
+        let nav = UINavigationController(rootViewController: viewController)
+        navigationController?.present(nav, animated: true, completion: nil)
     }
     
     func bind() {
         searchView.searchBar.rx.text.orEmpty
             .bind(to: viewModel.searchInputText)
             .disposed(by: disposeBag)
-        
+               
         viewModel.searchInputText
             .distinctUntilChanged()
             .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .filter { $0 != "" }
             .do(onNext: { [unowned self] _ in
-                print("test1")
                 self.viewModel.isLoading.accept(true)
             })
             .flatMap { text -> Single<MovieResult> in
-                print("test2")
                 return APIManager.shared.searchMovieSingle(query: text, start: 1)
             }
             .subscribe { [unowned self] event in
@@ -118,33 +120,6 @@ class SearchViewController: UIViewController {
                 }
             }
             .disposed(by: disposeBag)
-//            .asSingle()
-//            .subscribe { [unowned self] event in
-//                switch event {
-//                case .success(let movieResult):
-//
-//                    print("성공체크2")
-//
-//                    self.viewModel.isLoading.accept(false)
-//                    self.viewModel.startPage.accept(movieResult.start ?? 1)
-//                    self.viewModel.totalCount.accept(movieResult.total ?? 1)
-//
-//                    self.viewModel.movieResult.accept(movieResult)
-//
-//                    let array = movieResult.items.map { $0.convertDisplayItem() }
-//
-//                    self.viewModel.movieArray.accept(array)
-//                case .failure(let error):
-//                    print("실패체크2")
-//                    print(error)
-//                }
-//            }
-//            .disposed(by: disposeBag)
-        
-        
-        
-
-
 
         searchView.searchBar.rx.searchButtonClicked
             .throttle(.microseconds(500), scheduler: MainScheduler.instance)
@@ -202,13 +177,24 @@ class SearchViewController: UIViewController {
             .bind(to: searchView.searchTableView.rx.items(cellIdentifier: SearchTableViewCell.reuseIdentifier, cellType: SearchTableViewCell.self)) {
                 [unowned self] row, displayMovie, cell in
                 
-                var movie = viewModel.movieArray.value[row]
                 cell.configureData(movie: displayMovie)
                 cell.favoriteButtonAction = {
                     let favorite = self.viewModel.checkFavoriteMovie(movie: displayMovie)
-                    movie.favorite = favorite
-                    cell.changeButtonImage(favorite: movie.favorite)
+                    displayMovie.favorite = favorite
+                    cell.changeButtonImage(favorite: displayMovie.favorite)
                 }
+            }
+            .disposed(by: disposeBag)
+        
+        
+        Observable
+            .zip(searchView.searchTableView.rx.modelSelected(DisplayMovie.self),
+                 searchView.searchTableView.rx.itemSelected)
+            .bind { [unowned self] (displayMovie, indexPath) in
+                self.searchView.searchTableView.deselectRow(at: indexPath, animated: true)
+                
+                //화면전환 -> Detail로
+                
             }
             .disposed(by: disposeBag)
 
@@ -226,19 +212,14 @@ extension SearchViewController: UITableViewDataSourcePrefetching {
         
         for indexPath in indexPaths {
             if itemCount - 1 == indexPath.row && itemCount < totalCount {
-                
-                print("불렸니")
-                
                 let start = viewModel.startPage.value + 10
                 
                 searchView.searchBar.rx.text.orEmpty
                     .filter { $0 != "" }
                     .do(onNext: { [unowned self] _ in
-                        print("test1")
                         self.viewModel.isLoading.accept(true)
                     })
                     .flatMap { text -> Single<MovieResult> in
-                        print("test2")
                         return APIManager.shared.searchMovieSingle(query: text, start: start)
                     }
                     .subscribe { [unowned self] event in

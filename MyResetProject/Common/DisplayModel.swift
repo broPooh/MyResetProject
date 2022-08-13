@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Item
-struct DisplayMovie: Codable {
+class DisplayMovie: Codable {
     let subtitle: String
     let image: String
     let title: String
@@ -18,6 +18,18 @@ struct DisplayMovie: Codable {
     let director: String
     let link: String
     var favorite: Bool = false
+    
+    init(subtitle: String, image: String, title: String, actor: String, userRating: String, pubDate: String, director: String, link: String, favorite: Bool = false)  {
+        self.subtitle = subtitle
+        self.image = image
+        self.title = title
+        self.actor = actor
+        self.userRating = userRating
+        self.pubDate = pubDate
+        self.director = director
+        self.link = link
+        self.favorite = favorite
+    }
     
     func convertRealmItem() -> MovieItem {
         let movieItem = MovieItem()

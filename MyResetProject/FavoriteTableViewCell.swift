@@ -1,17 +1,16 @@
 //
-//  SearchViewCell.swift
+//  FavoriteTableViewCell.swift
 //  MyResetProject
 //
 //  Created by bro on 2022/08/13.
 //
 
-import Foundation
-
-import SnapKit
 import UIKit
 
-final class SearchTableViewCell: UITableViewCell, ViewRepresentable {
-    
+import SnapKit
+
+final class FavoriteTableViewCell: UITableViewCell, ViewRepresentable {
+
     var favoriteButtonAction: ( () -> () )?
     
     var infoView = InfoView()
@@ -38,11 +37,7 @@ final class SearchTableViewCell: UITableViewCell, ViewRepresentable {
         }
     }
     
-    func buttonConfig() {
-        infoView.favoriteButton.addTarget(self, action: #selector(favoriteButtonClicked), for: .touchUpInside)
-    }
-    
-    func configureData(movie: DisplayMovie) {
+    func configureData(movie: MovieItem) {
         infoView.posterImageView.setImage(imageUrl: movie.image)
         infoView.titleLable.text = movie.title
         infoView.directorLable.text = movie.director != "" ? "감독: \(movie.director)" : "감독: 정보가 없습니다."
@@ -54,10 +49,11 @@ final class SearchTableViewCell: UITableViewCell, ViewRepresentable {
         changeButtonImage(favorite: favorite)
     }
     
+    func buttonConfig() {
+        infoView.favoriteButton.addTarget(self, action: #selector(favoriteButtonClicked), for: .touchUpInside)
+    }
+    
     func changeButtonImage(favorite: Bool) {
-        
-        print(favorite)
-        
         let color: UIColor = favorite ? .yellow : .lightGray
         infoView.favoriteButton.setImage(UIImage(systemName: SystemImage.star.rawValue), for: .normal)
         infoView.favoriteButton.tintColor = color
@@ -67,5 +63,5 @@ final class SearchTableViewCell: UITableViewCell, ViewRepresentable {
         favoriteButtonAction?()
     }
     
-    
 }
+

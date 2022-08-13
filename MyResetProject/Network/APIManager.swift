@@ -58,15 +58,12 @@ final class APIManager {
     }
     
     func searchMovieSingle(query: String, start: Int) -> Single<MovieResult> {
-        print("요청됬니?")
         return Single<MovieResult>.create { single in
             APIManager.shared.searchMovieSession(query: query, start: start) { result in
                 switch result {
                 case .success(let result):
-                    print("성공")
                     single(.success(result))
                 case .failure(let error):
-                    print("실패")
                     single(.failure(error))
                 }
             }
