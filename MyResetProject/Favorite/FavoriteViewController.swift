@@ -44,8 +44,12 @@ class FavoriteViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //즐겨찾기 화면에서 복귀시 화면 갱신을 위함.
-        //이거 말고 다른 방법이 맞는거 같은데..
-        favoriteView.favoriteTableView.reloadData()
+        //favoriteView.favoriteTableView.reloadData()
+        
+        RealmManager.shared.movieObservableList()
+            .bind(to: viewModel.movieList)
+            .disposed(by: disposeBag)
+        
     }
     
     func configure() {
@@ -84,12 +88,17 @@ class FavoriteViewController: UIViewController {
         
         
         Observable
-            .zip(favoriteView.favoriteTableView.rx.modelSelected(DisplayMovie.self),
+            .zip(favoriteView.favoriteTableView.rx.modelSelected(MovieItem.self),
                  favoriteView.favoriteTableView.rx.itemSelected)
             .bind { [unowned self] (movieItem, indexPath) in
                 self.favoriteView.favoriteTableView.deselectRow(at: indexPath, animated: true)
                 
                 //화면전환 -> Detail로
+                //화면전환 -> Detail로
+                let detailView = DetailView()
+                let detailViewModel = DetailViewModel(movie: DisplayMovie.convertDisplaymodel(movieItem: movieItem), databaseManager: RealmManager.shared)
+                let viewController = DetailViewController(view: detailView, viewModel: detailViewModel)
+                navigationController?.pushViewController(viewController, animated: true)
                 
             }
             .disposed(by: disposeBag)

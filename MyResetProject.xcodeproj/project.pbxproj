@@ -51,6 +51,9 @@
 		1BFA763E28A7845F007D3690 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFA763D28A7845F007D3690 /* FavoriteTableViewCell.swift */; };
 		1BFA764028A78E9D007D3690 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFA763F28A78E9D007D3690 /* FavoriteViewController.swift */; };
 		1BFA764228A78F24007D3690 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFA764128A78F24007D3690 /* FavoriteViewModel.swift */; };
+		1BFA764628A87BAF007D3690 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFA764528A87BAF007D3690 /* DetailViewModel.swift */; };
+		1BFA764828A87BC2007D3690 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFA764728A87BC2007D3690 /* DetailView.swift */; };
+		1BFA764A28A87BD3007D3690 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFA764928A87BD3007D3690 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +95,9 @@
 		1BFA763D28A7845F007D3690 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		1BFA763F28A78E9D007D3690 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		1BFA764128A78F24007D3690 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
+		1BFA764528A87BAF007D3690 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		1BFA764728A87BC2007D3690 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		1BFA764928A87BD3007D3690 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +161,7 @@
 				1B45AF86289E8D8400BB79A3 /* Info.plist */,
 				1B45AF7E289E8D8000BB79A3 /* MyResetProject.xcdatamodeld */,
 				1B45AF8E289E8DC700BB79A3 /* MyAPIConfig.xcconfig */,
+				1BFA764B28A87FB8007D3690 /* Detail */,
 				1BFA764328A790F0007D3690 /* Favorite */,
 				1BFA763628A73A15007D3690 /* Search */,
 			);
@@ -260,6 +267,16 @@
 				1BFA763D28A7845F007D3690 /* FavoriteTableViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		1BFA764B28A87FB8007D3690 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				1BFA764728A87BC2007D3690 /* DetailView.swift */,
+				1BFA764528A87BAF007D3690 /* DetailViewModel.swift */,
+				1BFA764928A87BD3007D3690 /* DetailViewController.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,6 +389,7 @@
 				1BFA763928A75C39007D3690 /* URLSession+Extension.swift in Sources */,
 				1B0F788628A6972700AC2605 /* SearchViewController.swift in Sources */,
 				1B0F788228A6579B00AC2605 /* SearchViewModel.swift in Sources */,
+				1BFA764828A87BC2007D3690 /* DetailView.swift in Sources */,
 				1BFA763E28A7845F007D3690 /* FavoriteTableViewCell.swift in Sources */,
 				1B0F785D28A5325300AC2605 /* UITableViewCell+Extension.swift in Sources */,
 				1B0F787428A6543500AC2605 /* Endpoint.swift in Sources */,
@@ -379,11 +397,13 @@
 				1BFA764028A78E9D007D3690 /* FavoriteViewController.swift in Sources */,
 				1BFA763528A738B9007D3690 /* SearchTableViewCell.swift in Sources */,
 				1BFA763C28A7840E007D3690 /* FavoriteView.swift in Sources */,
+				1BFA764A28A87BD3007D3690 /* DetailViewController.swift in Sources */,
 				1B0F787828A6546700AC2605 /* APIEnums.swift in Sources */,
 				1B45AF80289E8D8000BB79A3 /* MyResetProject.xcdatamodeld in Sources */,
 				1B0F785528A5185D00AC2605 /* UIViewController+Extension.swift in Sources */,
 				1B45AFA7289E95EA00BB79A3 /* Config.swift in Sources */,
 				1BFA764228A78F24007D3690 /* FavoriteViewModel.swift in Sources */,
+				1BFA764628A87BAF007D3690 /* DetailViewModel.swift in Sources */,
 				1B0F785328A5182100AC2605 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

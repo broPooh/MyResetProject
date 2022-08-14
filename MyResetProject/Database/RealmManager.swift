@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 
 class RealmManager: DataBaseManagerType {
-    
+
     private init(){ }
     static let shared = RealmManager()
     
@@ -33,6 +33,17 @@ class RealmManager: DataBaseManagerType {
             print("create Error: \(error)")
             return Observable.error(error)
         }
+    }
+    
+    @discardableResult
+    func movieObservableList() -> Observable<[MovieItem]> {
+        let localRealm = try! Realm()
+        let results = localRealm.objects(MovieItem.self)
+        var array: [MovieItem] = []
+        results.forEach { movieItem in
+            array.append(movieItem)
+        }
+        return Observable.just(array)
     }
     
     @discardableResult

@@ -45,5 +45,9 @@ class DisplayMovie: Codable {
         
         return movieItem
     }
+    
+    static func convertDisplaymodel(movieItem: MovieItem) -> DisplayMovie {
+        return DisplayMovie(subtitle: movieItem.subtitle, image: movieItem.image, title: movieItem.title, actor: movieItem.actor, userRating: movieItem.userRating, pubDate: movieItem.pubDate, director: movieItem.director, link: movieItem.link, favorite: true)
+    }
 
 }

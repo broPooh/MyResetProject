@@ -196,7 +196,10 @@ class SearchViewController: UIViewController {
                 self.searchView.searchTableView.deselectRow(at: indexPath, animated: true)
                 
                 //화면전환 -> Detail로
-                
+                let detailView = DetailView()
+                let detailViewModel = DetailViewModel(movie: displayMovie, databaseManager: RealmManager.shared)
+                let viewController = DetailViewController(view: detailView, viewModel: detailViewModel)
+                navigationController?.pushViewController(viewController, animated: true)
             }
             .disposed(by: disposeBag)
 
