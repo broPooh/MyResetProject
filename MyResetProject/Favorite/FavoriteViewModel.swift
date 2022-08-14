@@ -13,9 +13,7 @@ import RxSwift
 final class FavoriteViewModel: CommonViewModel {
     var disposeBag = DisposeBag()
     
-    var movieList: BehaviorRelay<[MovieItem]> {
-        return RealmManager.shared.movieList()
-    }
+    var movieList: BehaviorRelay<[MovieItem]> = BehaviorRelay(value: [])
     
     func deleteMovie(movie: MovieItem) -> Observable<[MovieItem]> {
         return Observable.just(())
@@ -26,7 +24,7 @@ final class FavoriteViewModel: CommonViewModel {
             .flatMap { [weak self] movie in
                 self!.databaesManager.delete(movie: movie)
             }
-            .flatMap { [weak self] _ -> Observable<[MovieItem]> in
+            .flatMap { [weak self] movie -> Observable<[MovieItem]> in
                 self!.databaesManager.movieList()
             }
     }

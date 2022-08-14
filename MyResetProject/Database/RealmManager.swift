@@ -57,16 +57,16 @@ class RealmManager: DataBaseManagerType {
         return Observable.just(array)
     }
     
-    @discardableResult
-    func movieList() -> BehaviorRelay<[MovieItem]> {
-        let localRealm = try! Realm()
-        let results = localRealm.objects(MovieItem.self)
-        var array: [MovieItem] = []
-        results.forEach { movieItem in
-            array.append(movieItem)
-        }
-        return BehaviorRelay<[MovieItem]>(value: array)
-    }
+//    @discardableResult
+//    func movieList() -> BehaviorRelay<[MovieItem]> {
+//        let localRealm = try! Realm()
+//        let results = localRealm.objects(MovieItem.self)
+//        var array: [MovieItem] = []
+//        results.forEach { movieItem in
+//            array.append(movieItem)
+//        }
+//        return BehaviorRelay<[MovieItem]>(value: array)
+//    }
     
     @discardableResult
     func update(oldMovie: MovieItem, newMovie: MovieItem) -> Observable<MovieItem> {
