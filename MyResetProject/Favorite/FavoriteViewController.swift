@@ -78,7 +78,6 @@ class FavoriteViewController: UIViewController {
                 
                 cell.configureData(movie: movieItem)
                 cell.favoriteButtonAction = {
-                    print("눌렸다")
                     self!.viewModel.deleteMovie(movie: movieItem)
                         .bind(to: self!.viewModel.movieList)
                         .disposed(by: self!.disposeBag)

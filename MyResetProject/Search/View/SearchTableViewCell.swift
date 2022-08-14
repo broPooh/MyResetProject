@@ -54,10 +54,7 @@ final class SearchTableViewCell: UITableViewCell, ViewRepresentable {
         changeButtonImage(favorite: favorite)
     }
     
-    func changeButtonImage(favorite: Bool) {
-        
-        print(favorite)
-        
+    func changeButtonImage(favorite: Bool) {        
         let color: UIColor = favorite ? .yellow : .lightGray
         infoView.favoriteButton.setImage(UIImage(systemName: SystemImage.star.rawValue), for: .normal)
         infoView.favoriteButton.tintColor = color
