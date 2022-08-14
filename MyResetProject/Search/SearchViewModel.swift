@@ -37,8 +37,6 @@ final class SearchViewModel: CommonViewModel {
         
     func checkFavoriteMovie(movie: DisplayMovie) -> Bool {
         if movie.favorite {
-            //databaesManager.delete(movie: movie.convertRealmItem())
-            //RealmManager.shared.delete(movie: movie)
             databaesManager.delete(movie: movie)
             return false
         } else {

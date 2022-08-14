@@ -21,11 +21,13 @@ final class FavoriteViewModel: CommonViewModel {
             .flatMap {  _ in
                 return Observable.just(movie)
             }
-            .flatMap { [weak self] movie in
-                self!.databaesManager.delete(movie: movie)
+            .flatMap { [weak self] movie -> Observable<MovieItem> in
+                guard let self = self else { return Observable.just(movie)}
+                return self.databaesManager.delete(movie: movie)
             }
             .flatMap { [weak self] movie -> Observable<[MovieItem]> in
-                self!.databaesManager.movieList()
+                guard let self = self else { return Observable.just([])}
+                return self.databaesManager.movieList()
             }
     }
     

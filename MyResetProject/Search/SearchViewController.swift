@@ -169,33 +169,22 @@ class SearchViewController: UIViewController {
                 }
             }
             .disposed(by: disposeBag)
-        
-        //searchView.searchBar.rx.
-            
-        searchView.searchBar.rx.cancelButtonClicked
-            .map { () -> [DisplayMovie] in
-                return []
-            }
-            .subscribe(onNext: { result in
-                self.viewModel.movieArray.accept(result)
-            })
-            .disposed(by: disposeBag)
-        
+                
         viewModel.isLoading
             .asDriver()
-            .drive(onNext: { [unowned self] bool in
-                bool ? self.searchView.showProgress() : self.searchView.dissmissProgress()
+            .drive(onNext: { [weak self] bool in
+                bool ? self!.searchView.showProgress() : self!.searchView.dissmissProgress()
             })
             .disposed(by: disposeBag)
 
         
         viewModel.movieArray
             .bind(to: searchView.searchTableView.rx.items(cellIdentifier: SearchTableViewCell.reuseIdentifier, cellType: SearchTableViewCell.self)) {
-                [unowned self] row, displayMovie, cell in
+                [weak self] row, displayMovie, cell in
                 
                 cell.configureData(movie: displayMovie)
                 cell.favoriteButtonAction = {
-                    let favorite = self.viewModel.checkFavoriteMovie(movie: displayMovie)
+                    let favorite = self!.viewModel.checkFavoriteMovie(movie: displayMovie)
                     displayMovie.favorite = favorite
                     cell.changeButtonImage(favorite: displayMovie.favorite)
                 }

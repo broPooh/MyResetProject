@@ -44,8 +44,6 @@ class FavoriteViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //즐겨찾기 화면에서 복귀시 화면 갱신을 위함.
-        //favoriteView.favoriteTableView.reloadData()
-        
         RealmManager.shared.movieObservableList()
             .bind(to: viewModel.movieList)
             .disposed(by: disposeBag)
@@ -77,10 +75,11 @@ class FavoriteViewController: UIViewController {
                 [weak self] row, movieItem, cell in
                 
                 cell.configureData(movie: movieItem)
-                cell.favoriteButtonAction = {
-                    self!.viewModel.deleteMovie(movie: movieItem)
-                        .bind(to: self!.viewModel.movieList)
-                        .disposed(by: self!.disposeBag)
+                cell.favoriteButtonAction = { [weak self] in
+                    guard let self = self else { return }
+                    self.viewModel.deleteMovie(movie: movieItem)
+                        .bind(to: self.viewModel.movieList)
+                        .disposed(by: self.disposeBag)
                 }
             }
             .disposed(by: disposeBag)
