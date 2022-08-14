@@ -38,7 +38,7 @@ class RealmManager: DataBaseManagerType {
     @discardableResult
     func movieObservableList() -> Observable<[MovieItem]> {
         let localRealm = try! Realm()
-        let results = localRealm.objects(MovieItem.self)
+        let results = localRealm.objects(MovieItem.self).sorted(byKeyPath: "title", ascending: true)
         var array: [MovieItem] = []
         results.forEach { movieItem in
             array.append(movieItem)
@@ -49,7 +49,7 @@ class RealmManager: DataBaseManagerType {
     @discardableResult
     func movieList() -> Observable<[MovieItem]> {
         let localRealm = try! Realm()
-        let results = localRealm.objects(MovieItem.self)
+        let results = localRealm.objects(MovieItem.self).sorted(byKeyPath: "title", ascending: true)
         var array: [MovieItem] = []
         results.forEach { movieItem in
             array.append(movieItem)
