@@ -54,6 +54,7 @@
 		1BFA764628A87BAF007D3690 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFA764528A87BAF007D3690 /* DetailViewModel.swift */; };
 		1BFA764828A87BC2007D3690 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFA764728A87BC2007D3690 /* DetailView.swift */; };
 		1BFA764A28A87BD3007D3690 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFA764928A87BD3007D3690 /* DetailViewController.swift */; };
+		1BFA764D28A8FB6B007D3690 /* UserDefaultWapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFA764C28A8FB6B007D3690 /* UserDefaultWapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +99,7 @@
 		1BFA764528A87BAF007D3690 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		1BFA764728A87BC2007D3690 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		1BFA764928A87BD3007D3690 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		1BFA764C28A8FB6B007D3690 /* UserDefaultWapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultWapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 				1BFA764B28A87FB8007D3690 /* Detail */,
 				1BFA764328A790F0007D3690 /* Favorite */,
 				1BFA763628A73A15007D3690 /* Search */,
+				1BFA764C28A8FB6B007D3690 /* UserDefaultWapper.swift */,
 			);
 			path = MyResetProject;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				1B0F788228A6579B00AC2605 /* SearchViewModel.swift in Sources */,
 				1BFA764828A87BC2007D3690 /* DetailView.swift in Sources */,
 				1BFA763E28A7845F007D3690 /* FavoriteTableViewCell.swift in Sources */,
+				1BFA764D28A8FB6B007D3690 /* UserDefaultWapper.swift in Sources */,
 				1B0F785D28A5325300AC2605 /* UITableViewCell+Extension.swift in Sources */,
 				1B0F787428A6543500AC2605 /* Endpoint.swift in Sources */,
 				1B0F786E28A64B6F00AC2605 /* RealmModel.swift in Sources */,

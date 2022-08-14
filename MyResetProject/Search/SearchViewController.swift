@@ -113,8 +113,11 @@ class SearchViewController: UIViewController {
             .distinctUntilChanged()
             .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .filter { $0 != "" }
-            .do(onNext: { [unowned self] _ in
+            .do(onNext: { [weak self] _ in
+                guard let self = self else { return }
                 self.viewModel.isLoading.accept(true)
+                self.viewModel.startPage.accept(1)
+                self.viewModel.totalCount.accept(1)
             })
             .flatMap { text -> Single<MovieResult> in
                 return APIManager.shared.searchMovieSingle(query: text, start: 1)
@@ -146,8 +149,11 @@ class SearchViewController: UIViewController {
                 return self.searchView.searchBar.text ?? ""
             }
             .filter { $0 != "" }
-            .do(onNext: { [unowned self] _ in
+            .do(onNext: { [weak self] _ in
+                guard let self = self else { return }
                 self.viewModel.isLoading.accept(true)
+                self.viewModel.startPage.accept(1)
+                self.viewModel.totalCount.accept(1)
             })
             .asSingle()
             .flatMap { text -> Single<MovieResult> in
@@ -225,18 +231,23 @@ extension SearchViewController: UITableViewDataSourcePrefetching {
         for indexPath in indexPaths {
             if itemCount - 1 == indexPath.row && itemCount < totalCount {
                 let start = viewModel.startPage.value + 10
-                
-                searchView.searchBar.rx.text.orEmpty
-                    .filter { $0 != "" }
-                    .do(onNext: { [unowned self] _ in
-                        self.viewModel.isLoading.accept(true)
-                    })
-                    .flatMap { text -> Single<MovieResult> in
-                        return APIManager.shared.searchMovieSingle(query: text, start: start)
-                    }
-                    .subscribe { [unowned self] event in
+//                print("찍혔니")
+//                searchView.searchBar.rx.text.orEmpty
+//                    .filter { $0 != "" }
+//                    .do(onNext: { [unowned self] _ in
+//                        print("찍혔니 체크")
+//                        self.viewModel.isLoading.accept(true)
+//                    })
+//                    .flatMap { text -> Single<MovieResult> in
+//                        return APIManager.shared.searchMovieSingle(query: text, start: start)
+//                    }
+                APIManager.shared
+                    .searchMovieSingle(query: searchView.searchBar.text!, start: start)
+                    .subscribe { [weak self] event in
+                        guard let self = self else { return }
+                        print("찍혔니 체크", "스타트 \(self.viewModel.startPage.value)")
                         switch event {
-                        case .next(let movieResult):
+                        case .success(let movieResult):
                             self.viewModel.isLoading.accept(false)
                             self.viewModel.startPage.accept(movieResult.start ?? 1)
                             self.viewModel.totalCount.accept(movieResult.total ?? 1)
@@ -244,17 +255,38 @@ extension SearchViewController: UITableViewDataSourcePrefetching {
                             self.viewModel.movieResult.accept(movieResult)
 
                             let array = movieResult.items.map { $0.convertDisplayItem() }
-                            
+
                             let updateArray = self.viewModel.movieArray.value + array
                             self.viewModel.movieArray.accept(updateArray)
-                        case .error(let myError):
+                        case .failure(let error):
                             self.viewModel.isLoading.accept(false)
-                            print(myError)
-                        case .completed:
-                            print("completed")
+                            print(error)
                         }
                     }
                     .disposed(by: disposeBag)
+                    
+                    
+//                    .subscribe { [unowned self] event in
+//                        switch event {
+//                        case .next(let movieResult):
+//                            self.viewModel.isLoading.accept(false)
+//                            self.viewModel.startPage.accept(movieResult.start ?? 1)
+//                            self.viewModel.totalCount.accept(movieResult.total ?? 1)
+//
+//                            self.viewModel.movieResult.accept(movieResult)
+//
+//                            let array = movieResult.items.map { $0.convertDisplayItem() }
+//
+//                            let updateArray = self.viewModel.movieArray.value + array
+//                            self.viewModel.movieArray.accept(updateArray)
+//                        case .error(let myError):
+//                            self.viewModel.isLoading.accept(false)
+//                            print(myError)
+//                        case .completed:
+//                            print("completed")
+//                        }
+//                    }
+//                    .disposed(by: disposeBag)
 
             }
         }
@@ -267,6 +299,11 @@ extension SearchViewController: UITextFieldDelegate {
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         Observable.just([])
+            .do(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.viewModel.startPage.accept(1)
+                self.viewModel.totalCount.accept(1)
+            })
             .bind(to: viewModel.movieArray)
             .disposed(by: disposeBag)
         return true
