@@ -34,6 +34,11 @@ class SearchViewController: UIViewController {
         self.view = searchView
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        searchView.searchTableView.reloadData()
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +46,7 @@ class SearchViewController: UIViewController {
         view.backgroundColor = .white
         navigationConfig()
         tableViewConfig()
+        searchBarConfig()
         bind()
     }
     
@@ -75,6 +81,10 @@ class SearchViewController: UIViewController {
     private func tableViewConfig() {
         searchView.searchTableView.prefetchDataSource = self
         searchView.searchTableView.rowHeight = 120
+    }
+    
+    private func searchBarConfig() {
+        searchView.searchBar.searchTextField.delegate = self
     }
     
     @objc func favoriteButtonDidTap() {
@@ -157,6 +167,7 @@ class SearchViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        //searchView.searchBar.rx.
             
         searchView.searchBar.rx.cancelButtonClicked
             .map { () -> [DisplayMovie] in
@@ -254,4 +265,14 @@ extension SearchViewController: UITableViewDataSourcePrefetching {
     }
     
     
+}
+
+extension SearchViewController: UITextFieldDelegate {
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        Observable.just([])
+            .bind(to: viewModel.movieArray)
+            .disposed(by: disposeBag)
+        return true
+    }
 }

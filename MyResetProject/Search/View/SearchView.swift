@@ -16,7 +16,7 @@ final class SearchView: UIView {
     
     var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
-        searchBar.setImage(UIImage(named: SystemImage.icSearchNonW.rawValue), for: UISearchBar.Icon.search, state: .normal)
+        searchBar.setImage(UIImage(named: SystemImage.icSearchNonW.rawValue), for: .search, state: .normal)
         searchBar.setImage(UIImage(named: SystemImage.icCancel.rawValue), for: .clear, state: .normal)
         
         searchBar.searchTextField.textColor = .black
