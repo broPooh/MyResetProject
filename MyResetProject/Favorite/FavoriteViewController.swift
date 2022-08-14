@@ -35,7 +35,10 @@ class FavoriteViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        view.backgroundColor = .white
+        configure()
+        bind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,9 +48,7 @@ class FavoriteViewController: UIViewController {
         favoriteView.favoriteTableView.reloadData()
     }
     
-    override func configure() {
-        super.configure()
-        
+    func configure() {
         navigationConfig()
         tableViewConfig()
     }
@@ -65,9 +66,38 @@ class FavoriteViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = dissmissBarButton
     }
     
+    private func bind() {
+        
+        viewModel.movieList
+            .bind(to: favoriteView.favoriteTableView.rx.items(cellIdentifier: FavoriteTableViewCell.reuseIdentifier, cellType: FavoriteTableViewCell.self)) {
+                [weak self] row, movieItem, cell in
+                
+                cell.configureData(movie: movieItem)
+                cell.favoriteButtonAction = {
+                    print("눌렸다")
+                    self!.viewModel.deleteMovie(movie: movieItem)
+                        .bind(to: self!.viewModel.movieList)
+                        .disposed(by: self!.disposeBag)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        
+        Observable
+            .zip(favoriteView.favoriteTableView.rx.modelSelected(DisplayMovie.self),
+                 favoriteView.favoriteTableView.rx.itemSelected)
+            .bind { [unowned self] (movieItem, indexPath) in
+                self.favoriteView.favoriteTableView.deselectRow(at: indexPath, animated: true)
+                
+                //화면전환 -> Detail로
+                
+            }
+            .disposed(by: disposeBag)
+
+    }
+    
     private func tableViewConfig() {
-        favoriteView.favoriteTableView.delegate = self
-        favoriteView.favoriteTableView.dataSource = self
+        favoriteView.favoriteTableView.rowHeight = 120
     }
     
     @objc func dissmissButtonDidTap() {

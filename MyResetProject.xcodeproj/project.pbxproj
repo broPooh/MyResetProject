@@ -155,10 +155,7 @@
 				1B45AF86289E8D8400BB79A3 /* Info.plist */,
 				1B45AF7E289E8D8000BB79A3 /* MyResetProject.xcdatamodeld */,
 				1B45AF8E289E8DC700BB79A3 /* MyAPIConfig.xcconfig */,
-				1BFA763B28A7840E007D3690 /* FavoriteView.swift */,
-				1BFA764128A78F24007D3690 /* FavoriteViewModel.swift */,
-				1BFA763D28A7845F007D3690 /* FavoriteTableViewCell.swift */,
-				1BFA763F28A78E9D007D3690 /* FavoriteViewController.swift */,
+				1BFA764328A790F0007D3690 /* Favorite */,
 				1BFA763628A73A15007D3690 /* Search */,
 			);
 			path = MyResetProject;
@@ -242,6 +239,25 @@
 			children = (
 				1BFA763228A738A6007D3690 /* SearchView.swift */,
 				1BFA763428A738B9007D3690 /* SearchTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1BFA764328A790F0007D3690 /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				1BFA764428A790F8007D3690 /* View */,
+				1BFA764128A78F24007D3690 /* FavoriteViewModel.swift */,
+				1BFA763F28A78E9D007D3690 /* FavoriteViewController.swift */,
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
+		1BFA764428A790F8007D3690 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1BFA763B28A7840E007D3690 /* FavoriteView.swift */,
+				1BFA763D28A7845F007D3690 /* FavoriteTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

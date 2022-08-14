@@ -18,7 +18,7 @@ final class InfoView: UIView, ViewRepresentable {
         posterImageView.contentMode = .scaleAspectFill
         posterImageView.backgroundColor = .yellow
         posterImageView.clipsToBounds = true
-        posterImageView.layer.cornerRadius = 4
+        posterImageView.layer.cornerRadius = 8
         return posterImageView
     }()
     

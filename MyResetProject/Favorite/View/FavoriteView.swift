@@ -12,7 +12,7 @@ final class FavoriteView: UIView, ViewRepresentable {
     
     var favoriteTableView: UITableView = {
         let tableView = UITableView()
-        //tableView.register(FavoriteTableViewCell.self, forCellReuseIdentifier: FavoriteTableViewCell.reuseIdentifier)
+        tableView.register(FavoriteTableViewCell.self, forCellReuseIdentifier: FavoriteTableViewCell.reuseIdentifier)
         tableView.separatorStyle = .none
         tableView.keyboardDismissMode = .onDrag
         return tableView
@@ -20,6 +20,8 @@ final class FavoriteView: UIView, ViewRepresentable {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupView()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {

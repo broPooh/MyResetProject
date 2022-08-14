@@ -82,6 +82,8 @@ class SearchViewController: UIViewController {
         let favoriteViewModel = FavoriteViewModel(databaesManager: RealmManager.shared)
         let viewController = FavoriteViewController(view: favoriteView, viewModel: favoriteViewModel)
         let nav = UINavigationController(rootViewController: viewController)
+        nav.modalPresentationStyle = .fullScreen
+        
         navigationController?.present(nav, animated: true, completion: nil)
     }
     
