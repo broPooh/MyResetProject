@@ -39,7 +39,11 @@ class SearchViewController: UIViewController {
         //리로드 데이터 말고
         //전체적으로 데이터를 다시 줘서 업데이트하고 싶은데
         //어떻게 해야하지..
-        searchView.searchTableView.reloadData()
+        //searchView.searchTableView.reloadData()
+        Observable.just(viewModel.movieArray.value)
+            .bind(to: viewModel.movieArray)
+            .disposed(by: disposeBag)
+        
     }
     
 
