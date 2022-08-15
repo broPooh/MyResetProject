@@ -125,12 +125,12 @@ class SearchViewController: UIViewController {
             .filter { $0 != "" }
             .do(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                print("실시간 검색 서버 호출")
                 self.viewModel.isLoading.accept(true)
                 self.viewModel.startPage.accept(SearchEnums.startPage)
                 self.viewModel.totalCount.accept(SearchEnums.totalCount)
             })
             .flatMap { text -> Single<MovieResult> in
+                //print("실시간 검색 서버 호출")
                 return APIManager.shared.searchMovieSingle(query: text, start: SearchEnums.startPage)
             }
             .subscribe { [unowned self] event in
@@ -163,13 +163,13 @@ class SearchViewController: UIViewController {
             .filter { $0 != "" }
             .do(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                print("검색버튼 서버 호출")
                 self.viewModel.isLoading.accept(true)
                 self.viewModel.startPage.accept(SearchEnums.startPage)
                 self.viewModel.totalCount.accept(SearchEnums.totalCount)
             })
             .asSingle()
             .flatMap { text -> Single<MovieResult> in
+                //print("검색버튼 서버 호출")
                 return APIManager.shared.searchMovieSingle(query: text, start: SearchEnums.startPage)
             }
             .map { [unowned self] movieResult -> [DisplayMovie] in
@@ -253,6 +253,7 @@ extension SearchViewController: UITableViewDataSourcePrefetching {
                         self?.viewModel.isLoading.accept(true)
                         self?.viewModel.startPage.accept(SearchEnums.startPage)
                         self?.viewModel.totalCount.accept(SearchEnums.totalCount)
+                        //print("호출 여부 체크")
                         return APIManager.shared.searchMovieSingle(query: text, start: start) }
                     .subscribe { [weak self] event in
                         guard let self = self else { return }
