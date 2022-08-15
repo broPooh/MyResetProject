@@ -33,7 +33,7 @@ class MovieItem: Object {
     }
     
     
-    static func updateMovie(oldMovie:MovieItem, updateMovie: MovieItem) -> MovieItem {
+    static func updateMovie(oldMovie: MovieItem, updateMovie: MovieItem) -> MovieItem {
         oldMovie.title = updateMovie.title
         oldMovie.subtitle = updateMovie.subtitle
         oldMovie.image = updateMovie.image

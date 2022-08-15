@@ -14,13 +14,9 @@ import RxCocoa
 import RxAlamofire
 
 final class APIManager {
-    private let scheduler: ConcurrentDispatchQueueScheduler
     static let shared = APIManager()
     
-    private init() {
-        self.scheduler = ConcurrentDispatchQueueScheduler(qos: DispatchQoS(qosClass: DispatchQoS.QoSClass.background, relativePriority: 1))
-
-    }
+    private init() { }
         
     func searchMovieSingle(query: String, start: Int) -> Single<MovieResult> {
         return Single<MovieResult>.create { single in
