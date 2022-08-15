@@ -38,6 +38,8 @@ class SearchViewController: UIViewController {
         super.viewWillAppear(animated)
         //리로드 데이터 말고
         //전체적으로 데이터를 다시 줘서 업데이트하고 싶은데 이게 맞는건지..?
+        
+        
 
         //searchView.searchTableView.reloadData()
         Observable.just(viewModel.movieArray.value)
@@ -115,6 +117,7 @@ class SearchViewController: UIViewController {
             .filter { $0 != "" }
             .do(onNext: { [weak self] _ in
                 guard let self = self else { return }
+                print("실시간 검색 서버 호출")
                 self.viewModel.isLoading.accept(true)
                 self.viewModel.startPage.accept(SearchEnums.startPage)
                 self.viewModel.totalCount.accept(SearchEnums.totalCount)
@@ -152,6 +155,7 @@ class SearchViewController: UIViewController {
             .filter { $0 != "" }
             .do(onNext: { [weak self] _ in
                 guard let self = self else { return }
+                print("검색버튼 서버 호출")
                 self.viewModel.isLoading.accept(true)
                 self.viewModel.startPage.accept(SearchEnums.startPage)
                 self.viewModel.totalCount.accept(SearchEnums.totalCount)
