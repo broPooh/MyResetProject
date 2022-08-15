@@ -17,3 +17,11 @@
 - searchbar의 클리어 버튼 클릭시에도 startPage를 1로 초기화 필요.
 - 요청 전 1로 초기화 해주고, 검색후 결과에 따라서 값이 반영이 되도록 수정하여 해결.
 - prefetching이 될 때 요청되는 Observable을 1번의 이벤트만 방출되는 형태로 작성하여 해결.
+
+
+------------------------------------------------------------------------------
+
+#해결해야할 지점 + 추가 공부 필요 지점
+1. WKWebView 공부 및 Could not signal service com.apple.WebKit.Networking 에러 원인 및 해결
+2. Disposable의 해지시점..? 제대로 해제되고 있는지 체크 -> memory leak 확인하고 체크하는 습관
+3. Observable을 용도에 맞게 제대로 사용하는게 맞는지.
