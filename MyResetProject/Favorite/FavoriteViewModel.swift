@@ -11,7 +11,6 @@ import RxCocoa
 import RxSwift
 
 final class FavoriteViewModel: CommonViewModel {
-    var disposeBag = DisposeBag()
     
     var movieList: BehaviorRelay<[MovieItem]> = BehaviorRelay(value: [])
     

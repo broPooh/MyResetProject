@@ -14,7 +14,7 @@ class DetailViewController: UIViewController {
     private var detailView: DetailView
     private var viewModel: DetailViewModel
     
-    var disposeBag = DisposeBag()
+    var disposeBag: DisposeBag!
     
     init(view: DetailView, viewModel: DetailViewModel) {
         self.detailView = view
@@ -29,6 +29,12 @@ class DetailViewController: UIViewController {
     override func loadView() {
         self.view = detailView
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        disposeBag = DisposeBag()
+        bind()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +42,15 @@ class DetailViewController: UIViewController {
         view.backgroundColor = .white
         
         navigationConfig()
-        bind()
+        //bind()
         bindMovieData(movie: viewModel.movie)
         bindWeb(movie: viewModel.movie)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        disposeBag = DisposeBag()
+        detailView.webView.stopLoading()
     }
     
     private func navigationConfig() {

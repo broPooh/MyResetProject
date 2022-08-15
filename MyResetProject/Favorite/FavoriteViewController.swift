@@ -16,7 +16,7 @@ class FavoriteViewController: UIViewController {
     private var favoriteView: FavoriteView
     private var viewModel: FavoriteViewModel
     
-    var disposeBag = DisposeBag()
+    private var disposeBag: DisposeBag!
     
     init(view: FavoriteView, viewModel: FavoriteViewModel) {
         self.favoriteView = view
@@ -37,16 +37,24 @@ class FavoriteViewController: UIViewController {
         
         view.backgroundColor = .white
         configure()
-        bind()
+        //bind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        disposeBag = DisposeBag()
+        bind()
+        
         //즐겨찾기 화면에서 복귀시 화면 갱신을 위함.
         RealmManager.shared.movieList()
             .bind(to: viewModel.movieList)
             .disposed(by: disposeBag)
-        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        disposeBag = DisposeBag()
     }
     
     func configure() {

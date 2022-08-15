@@ -10,9 +10,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-final class SearchViewModel: CommonViewModel {
-    var disposeBag = DisposeBag()
-    
+final class SearchViewModel: CommonViewModel {    
     let searchInputText: PublishRelay<String> = PublishRelay()
 
     var movieResult: PublishRelay<MovieResult> = PublishRelay()

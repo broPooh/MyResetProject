@@ -11,7 +11,6 @@ import RxCocoa
 import RxSwift
 
 final class DetailViewModel: CommonViewModel {
-    var disposeBag = DisposeBag()
     var movie: DisplayMovie
     
     let isFavorite = BehaviorRelay<Bool>(value: false)

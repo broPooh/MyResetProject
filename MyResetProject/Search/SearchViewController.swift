@@ -18,7 +18,7 @@ class SearchViewController: UIViewController {
     private var searchView: SearchView
     private var viewModel: SearchViewModel
     
-    var disposeBag = DisposeBag()
+    private var disposeBag: DisposeBag!
     
     init(view: SearchView, viewModel: SearchViewModel) {
         self.searchView = view
@@ -36,15 +36,18 @@ class SearchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        disposeBag = DisposeBag()
+        bind()
         //리로드 데이터 말고
         //전체적으로 데이터를 다시 줘서 업데이트하고 싶은데 이게 맞는건지..?
-        
-        
 
         //searchView.searchTableView.reloadData()
         Observable.just(viewModel.movieArray.value)
             .bind(to: viewModel.movieArray)
             .disposed(by: disposeBag)
+        
+        
         
     }
     
@@ -56,7 +59,12 @@ class SearchViewController: UIViewController {
         navigationConfig()
         tableViewConfig()
         searchBarConfig()
-        bind()
+        //bind()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        disposeBag = DisposeBag()
     }
     
     private func navigationConfig() {
