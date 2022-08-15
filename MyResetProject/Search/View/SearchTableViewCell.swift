@@ -49,7 +49,7 @@ final class SearchTableViewCell: UITableViewCell, ViewRepresentable {
         infoView.castLable.text = movie.actor != "" ? "출연: \(movie.actor)" : "출연: 정보가 없습니다."
         infoView.rateLable.text = movie.userRating != "" ? "평점: \(movie.userRating)" : "평점: 정보가 없습니다."
         
-        let favorite = RealmManager.shared.checkFavorite(title: movie.title, director: movie.director)
+        let favorite = RealmManager.shared.checkFavorite(title: movie.title, director: movie.director, userRating: movie.userRating)
         
         changeButtonImage(favorite: favorite)
     }

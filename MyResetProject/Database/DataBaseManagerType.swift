@@ -31,6 +31,6 @@ protocol DataBaseManagerType {
     @discardableResult
     func delete(movie: DisplayMovie) -> Observable<MovieItem>
     
-    func checkFavorite(title: String, director: String) -> Bool
+    func checkFavorite(title: String, director: String, userRating: String) -> Bool
     
 }

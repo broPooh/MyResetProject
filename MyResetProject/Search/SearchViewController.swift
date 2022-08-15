@@ -37,8 +37,8 @@ class SearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //리로드 데이터 말고
-        //전체적으로 데이터를 다시 줘서 업데이트하고 싶은데
-        //어떻게 해야하지..
+        //전체적으로 데이터를 다시 줘서 업데이트하고 싶은데 이게 맞는건지..?
+
         //searchView.searchTableView.reloadData()
         Observable.just(viewModel.movieArray.value)
             .bind(to: viewModel.movieArray)
@@ -73,7 +73,7 @@ class SearchViewController: UIViewController {
     
     private func createCustomBarButton() -> UIButton {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        button.setImage(UIImage(systemName: SystemImage.star.rawValue), for: .normal)
         button.tintColor = .yellow
         button.setTitle("즐겨찾기", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 12)
@@ -111,23 +111,23 @@ class SearchViewController: UIViewController {
                
         viewModel.searchInputText
             .distinctUntilChanged()
-            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .debounce(.seconds(SearchEnums.debounce), scheduler: MainScheduler.instance)
             .filter { $0 != "" }
             .do(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 self.viewModel.isLoading.accept(true)
-                self.viewModel.startPage.accept(1)
-                self.viewModel.totalCount.accept(1)
+                self.viewModel.startPage.accept(SearchEnums.startPage)
+                self.viewModel.totalCount.accept(SearchEnums.totalCount)
             })
             .flatMap { text -> Single<MovieResult> in
-                return APIManager.shared.searchMovieSingle(query: text, start: 1)
+                return APIManager.shared.searchMovieSingle(query: text, start: SearchEnums.startPage)
             }
             .subscribe { [unowned self] event in
                 switch event {
                 case .next(let movieResult):
                     self.viewModel.isLoading.accept(false)
-                    self.viewModel.startPage.accept(movieResult.start ?? 1)
-                    self.viewModel.totalCount.accept(movieResult.total ?? 1)
+                    self.viewModel.startPage.accept(movieResult.start ?? SearchEnums.startPage)
+                    self.viewModel.totalCount.accept(movieResult.total ?? SearchEnums.totalCount)
 
                     self.viewModel.movieResult.accept(movieResult)
 
@@ -144,24 +144,25 @@ class SearchViewController: UIViewController {
             .disposed(by: disposeBag)
 
         searchView.searchBar.rx.searchButtonClicked
-            .throttle(.microseconds(500), scheduler: MainScheduler.instance)
-            .map { [unowned self] () -> String in
+            .throttle(.microseconds(SearchEnums.throttle), scheduler: MainScheduler.instance)
+            .map { [weak self] () -> String in
+                guard let self = self else { return ""}
                 return self.searchView.searchBar.text ?? ""
             }
             .filter { $0 != "" }
             .do(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 self.viewModel.isLoading.accept(true)
-                self.viewModel.startPage.accept(1)
-                self.viewModel.totalCount.accept(1)
+                self.viewModel.startPage.accept(SearchEnums.startPage)
+                self.viewModel.totalCount.accept(SearchEnums.totalCount)
             })
             .asSingle()
             .flatMap { text -> Single<MovieResult> in
-                return APIManager.shared.searchMovieSingle(query: text, start: 1)
+                return APIManager.shared.searchMovieSingle(query: text, start: SearchEnums.startPage)
             }
             .map { [unowned self] movieResult -> [DisplayMovie] in
-                self.viewModel.startPage.accept(movieResult.start ?? 1)
-                self.viewModel.totalCount.accept(movieResult.total ?? 1)
+                self.viewModel.startPage.accept(movieResult.start ?? SearchEnums.startPage)
+                self.viewModel.totalCount.accept(movieResult.total ?? SearchEnums.totalCount)
                                 
                 let array = movieResult.items.map { movie in
                     movie.convertDisplayItem()
@@ -230,27 +231,24 @@ extension SearchViewController: UITableViewDataSourcePrefetching {
         
         for indexPath in indexPaths {
             if itemCount - 1 == indexPath.row && itemCount < totalCount {
-                let start = viewModel.startPage.value + 10
-//                print("찍혔니")
-//                searchView.searchBar.rx.text.orEmpty
-//                    .filter { $0 != "" }
-//                    .do(onNext: { [unowned self] _ in
-//                        print("찍혔니 체크")
-//                        self.viewModel.isLoading.accept(true)
-//                    })
-//                    .flatMap { text -> Single<MovieResult> in
-//                        return APIManager.shared.searchMovieSingle(query: text, start: start)
-//                    }
-                APIManager.shared
-                    .searchMovieSingle(query: searchView.searchBar.text!, start: start)
+                let start = viewModel.startPage.value + SearchEnums.displayCount
+                
+                
+                Observable.just(searchView.searchBar.text ?? "")
+                    .filter { $0 != "" }
+                    .asSingle()
+                    .flatMap { [weak self] text -> Single<MovieResult> in
+                        self?.viewModel.isLoading.accept(true)
+                        self?.viewModel.startPage.accept(SearchEnums.startPage)
+                        self?.viewModel.totalCount.accept(SearchEnums.totalCount)
+                        return APIManager.shared.searchMovieSingle(query: text, start: start) }
                     .subscribe { [weak self] event in
                         guard let self = self else { return }
-                        print("찍혔니 체크", "스타트 \(self.viewModel.startPage.value)")
                         switch event {
                         case .success(let movieResult):
                             self.viewModel.isLoading.accept(false)
-                            self.viewModel.startPage.accept(movieResult.start ?? 1)
-                            self.viewModel.totalCount.accept(movieResult.total ?? 1)
+                            self.viewModel.startPage.accept(movieResult.start ?? SearchEnums.startPage)
+                            self.viewModel.totalCount.accept(movieResult.total ?? SearchEnums.totalCount)
 
                             self.viewModel.movieResult.accept(movieResult)
 
@@ -264,30 +262,6 @@ extension SearchViewController: UITableViewDataSourcePrefetching {
                         }
                     }
                     .disposed(by: disposeBag)
-                    
-                    
-//                    .subscribe { [unowned self] event in
-//                        switch event {
-//                        case .next(let movieResult):
-//                            self.viewModel.isLoading.accept(false)
-//                            self.viewModel.startPage.accept(movieResult.start ?? 1)
-//                            self.viewModel.totalCount.accept(movieResult.total ?? 1)
-//
-//                            self.viewModel.movieResult.accept(movieResult)
-//
-//                            let array = movieResult.items.map { $0.convertDisplayItem() }
-//
-//                            let updateArray = self.viewModel.movieArray.value + array
-//                            self.viewModel.movieArray.accept(updateArray)
-//                        case .error(let myError):
-//                            self.viewModel.isLoading.accept(false)
-//                            print(myError)
-//                        case .completed:
-//                            print("completed")
-//                        }
-//                    }
-//                    .disposed(by: disposeBag)
-
             }
         }
     }
@@ -301,8 +275,8 @@ extension SearchViewController: UITextFieldDelegate {
         Observable.just([])
             .do(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                self.viewModel.startPage.accept(1)
-                self.viewModel.totalCount.accept(1)
+                self.viewModel.startPage.accept(SearchEnums.startPage)
+                self.viewModel.totalCount.accept(SearchEnums.totalCount)
             })
             .bind(to: viewModel.movieArray)
             .disposed(by: disposeBag)

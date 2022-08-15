@@ -40,7 +40,7 @@ struct Movie: Codable {
         
     
     func convertDisplayItem() -> DisplayMovie {
-        return DisplayMovie(subtitle: self.subtitle?.htmlEscaped ?? "", image: self.image?.htmlEscaped ?? "", title: self.title?.htmlEscaped ?? "", actor: self.actor?.htmlEscaped ?? "", userRating: self.userRating?.htmlEscaped ?? "", pubDate: self.pubDate?.htmlEscaped ?? "", director: self.director?.htmlEscaped ?? "", link: self.link?.htmlEscaped ?? "", favorite: RealmManager.shared.checkFavorite(title: self.title?.htmlEscaped ?? "", director: self.director?.htmlEscaped ?? ""))
+        return DisplayMovie(subtitle: self.subtitle?.htmlEscaped ?? "", image: self.image?.htmlEscaped ?? "", title: self.title?.htmlEscaped ?? "", actor: self.actor?.htmlEscaped ?? "", userRating: self.userRating?.htmlEscaped ?? "", pubDate: self.pubDate?.htmlEscaped ?? "", director: self.director?.htmlEscaped ?? "", link: self.link?.htmlEscaped ?? "", favorite: RealmManager.shared.checkFavorite(title: self.title?.htmlEscaped ?? "", director: self.director?.htmlEscaped ?? "", userRating: self.userRating ?? ""))
     }
     
 }

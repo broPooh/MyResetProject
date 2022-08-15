@@ -24,7 +24,7 @@ final class DetailViewModel: CommonViewModel {
     }
         
     func checkDB() -> Bool {
-        return databaesManager.checkFavorite(title: movie.title, director: movie.director)
+        return databaesManager.checkFavorite(title: movie.title, director: movie.director, userRating: movie.userRating)
     }
     
     func checkFavoriteMovie(favorite: Bool) -> Bool{

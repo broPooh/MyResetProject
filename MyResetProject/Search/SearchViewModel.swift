@@ -36,7 +36,8 @@ final class SearchViewModel: CommonViewModel {
     }
         
     func checkFavoriteMovie(movie: DisplayMovie) -> Bool {
-        if movie.favorite {
+        let favorite = databaesManager.checkFavorite(title: movie.title, director: movie.director, userRating: movie.userRating)
+        if favorite {
             databaesManager.delete(movie: movie)
             return false
         } else {

@@ -35,16 +35,16 @@ class RealmManager: DataBaseManagerType {
         }
     }
     
-    @discardableResult
-    func movieObservableList() -> Observable<[MovieItem]> {
-        let localRealm = try! Realm()
-        let results = localRealm.objects(MovieItem.self).sorted(byKeyPath: "title", ascending: true)
-        var array: [MovieItem] = []
-        results.forEach { movieItem in
-            array.append(movieItem)
-        }
-        return Observable.just(array)
-    }
+//    @discardableResult
+//    func movieObservableList() -> Observable<[MovieItem]> {
+//        let localRealm = try! Realm()
+//        let results = localRealm.objects(MovieItem.self).sorted(byKeyPath: "title", ascending: true)
+//        var array: [MovieItem] = []
+//        results.forEach { movieItem in
+//            array.append(movieItem)
+//        }
+//        return Observable.just(array)
+//    }
     
     @discardableResult
     func movieList() -> Observable<[MovieItem]> {
@@ -109,10 +109,10 @@ class RealmManager: DataBaseManagerType {
         }
     }
     
-    func checkFavorite(title: String, director: String) -> Bool {
+    func checkFavorite(title: String, director: String, userRating: String) -> Bool {
         let localRealm = try! Realm()
         let checkItem = localRealm.objects(MovieItem.self).where({
-            $0.title == title && $0.director == director
+            $0.title == title && $0.director == director && $0.userRating == userRating
         }).first
         return checkItem != nil ? true : false
     }

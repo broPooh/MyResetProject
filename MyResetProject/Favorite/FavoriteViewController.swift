@@ -17,7 +17,6 @@ class FavoriteViewController: UIViewController {
     private var viewModel: FavoriteViewModel
     
     var disposeBag = DisposeBag()
-    var favoriteButtonAction: ( () -> () )?
     
     init(view: FavoriteView, viewModel: FavoriteViewModel) {
         self.favoriteView = view
@@ -44,7 +43,7 @@ class FavoriteViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //즐겨찾기 화면에서 복귀시 화면 갱신을 위함.
-        RealmManager.shared.movieObservableList()
+        RealmManager.shared.movieList()
             .bind(to: viewModel.movieList)
             .disposed(by: disposeBag)
         
@@ -72,8 +71,7 @@ class FavoriteViewController: UIViewController {
         
         viewModel.movieList
             .bind(to: favoriteView.favoriteTableView.rx.items(cellIdentifier: FavoriteTableViewCell.reuseIdentifier, cellType: FavoriteTableViewCell.self)) {
-                [weak self] row, movieItem, cell in
-                
+                row, movieItem, cell in
                 cell.configureData(movie: movieItem)
                 cell.favoriteButtonAction = { [weak self] in
                     guard let self = self else { return }
@@ -88,7 +86,8 @@ class FavoriteViewController: UIViewController {
         Observable
             .zip(favoriteView.favoriteTableView.rx.modelSelected(MovieItem.self),
                  favoriteView.favoriteTableView.rx.itemSelected)
-            .bind { [unowned self] (movieItem, indexPath) in
+            .bind { [weak self] (movieItem, indexPath) in
+                guard let self = self else { return }
                 self.favoriteView.favoriteTableView.deselectRow(at: indexPath, animated: true)
                 
                 //화면전환 -> Detail로
@@ -96,7 +95,7 @@ class FavoriteViewController: UIViewController {
                 let detailView = DetailView()
                 let detailViewModel = DetailViewModel(movie: DisplayMovie.convertDisplaymodel(movieItem: movieItem), databaseManager: RealmManager.shared)
                 let viewController = DetailViewController(view: detailView, viewModel: detailViewModel)
-                navigationController?.pushViewController(viewController, animated: true)
+                self.navigationController?.pushViewController(viewController, animated: true)
                 
             }
             .disposed(by: disposeBag)

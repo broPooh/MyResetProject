@@ -25,6 +25,14 @@ enum NetworkHeaderField {
     }
 }
 
+enum SearchEnums {
+    static let startPage = 1
+    static let totalCount = 1
+    static let displayCount = 10
+    static let throttle = 500
+    static let debounce = 1
+}
+
 
 enum NaverSearchError: Int, Error {
     case checkParameter = 400
