@@ -48,6 +48,9 @@ class FavoriteViewController: UIViewController {
         
         //즐겨찾기 화면에서 복귀시 화면 갱신을 위함.
         RealmManager.shared.movieList()
+            .do(onNext: { movieList in
+                print(movieList)
+            })
             .bind(to: viewModel.movieList)
             .disposed(by: disposeBag)
     }

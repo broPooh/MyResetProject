@@ -55,6 +55,19 @@
 		1BFA764A28A87BD3007D3690 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFA764928A87BD3007D3690 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1BFA768328AB20E7007D3690 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1B0F785228A5182100AC2605 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		1B0F785428A5185D00AC2605 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -132,6 +145,7 @@
 				1B45AF8C289E8D9C00BB79A3 /* .gitignore */,
 				1B45AF74289E8D8000BB79A3 /* MyResetProject */,
 				1B45AF73289E8D8000BB79A3 /* Products */,
+				1BFA767E28AB20E7007D3690 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -276,6 +290,13 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		1BFA767E28AB20E7007D3690 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -286,6 +307,7 @@
 				1B45AF6E289E8D8000BB79A3 /* Sources */,
 				1B45AF6F289E8D8000BB79A3 /* Frameworks */,
 				1B45AF70289E8D8000BB79A3 /* Resources */,
+				1BFA768328AB20E7007D3690 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

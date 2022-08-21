@@ -5,9 +5,8 @@
 //  Created by bro on 2022/08/11.
 //
 
-import Foundation
-
 import UIKit
+
 import SnapKit
 
 final class InfoView: UIView, ViewRepresentable {

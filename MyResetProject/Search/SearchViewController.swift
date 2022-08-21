@@ -13,7 +13,7 @@ import SnapKit
 
 import RxAlamofire
 
-class SearchViewController: UIViewController {
+class SearchViewController: BaseViewController {
     
     private var searchView: SearchView
     private var viewModel: SearchViewModel
@@ -48,9 +48,13 @@ class SearchViewController: UIViewController {
             .disposed(by: disposeBag)
         
         
-        
+        print(#function)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print(#function)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +68,7 @@ class SearchViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        print(#function)
         disposeBag = DisposeBag()
     }
     
@@ -122,7 +127,7 @@ class SearchViewController: UIViewController {
         viewModel.searchInputText
             .distinctUntilChanged()
             .debounce(.seconds(SearchEnums.debounce), scheduler: MainScheduler.instance)
-            .filter { $0 != "" }
+            .filter { $0 != "" && self.checkNetworkValue }
             .do(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 self.viewModel.isLoading.accept(true)

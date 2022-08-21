@@ -8,6 +8,11 @@
 import Foundation
 import RealmSwift
 
+enum SearchType: Int, PersistableEnum {
+   case movie = 100
+   case drama = 200
+}
+
 class MovieItem: Object {
     @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var title: String
@@ -18,8 +23,9 @@ class MovieItem: Object {
     @Persisted var pubDate: String
     @Persisted var director: String
     @Persisted var link: String
+    @Persisted var type: SearchType
     
-    convenience init(id: Int, title: String, subtitle: String, image: String, actor: String, userRating: String, pubDate: String, director: String, link: String) {
+    convenience init(id: Int, title: String, subtitle: String, image: String, actor: String, userRating: String, pubDate: String, director: String, link: String, type: SearchType = .movie) {
         self.init()
         
         self.title = title
@@ -30,6 +36,7 @@ class MovieItem: Object {
         self.pubDate = pubDate
         self.director = director
         self.link = link
+        self.type = type
     }
     
     
