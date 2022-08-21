@@ -43,6 +43,7 @@
 		1B45AFA2289E8EA800BB79A3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1B45AFA1289E8EA800BB79A3 /* SnapKit */; };
 		1B45AFA5289E95D500BB79A3 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B45AFA4289E95D500BB79A3 /* Appearance.swift */; };
 		1B45AFA7289E95EA00BB79A3 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B45AFA6289E95EA00BB79A3 /* Config.swift */; };
+		1B8FE29D28B2462D0056CF20 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8FE29C28B2462D0056CF20 /* NetworkMonitor.swift */; };
 		1BFA763328A738A6007D3690 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFA763228A738A6007D3690 /* SearchView.swift */; };
 		1BFA763528A738B9007D3690 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFA763428A738B9007D3690 /* SearchTableViewCell.swift */; };
 		1BFA763928A75C39007D3690 /* URLSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFA763828A75C39007D3690 /* URLSession+Extension.swift */; };
@@ -99,6 +100,7 @@
 		1B45AF8E289E8DC700BB79A3 /* MyAPIConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = MyAPIConfig.xcconfig; sourceTree = "<group>"; };
 		1B45AFA4289E95D500BB79A3 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		1B45AFA6289E95EA00BB79A3 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		1B8FE29C28B2462D0056CF20 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		1BFA763228A738A6007D3690 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		1BFA763428A738B9007D3690 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		1BFA763828A75C39007D3690 /* URLSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extension.swift"; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				1B0F786628A5CE1100AC2605 /* Model.swift */,
 				1B0F787328A6543500AC2605 /* Endpoint.swift */,
 				1B0F787528A6545700AC2605 /* APIManager.swift */,
+				1B8FE29C28B2462D0056CF20 /* NetworkMonitor.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				1BFA764028A78E9D007D3690 /* FavoriteViewController.swift in Sources */,
 				1BFA763528A738B9007D3690 /* SearchTableViewCell.swift in Sources */,
 				1BFA763C28A7840E007D3690 /* FavoriteView.swift in Sources */,
+				1B8FE29D28B2462D0056CF20 /* NetworkMonitor.swift in Sources */,
 				1BFA764A28A87BD3007D3690 /* DetailViewController.swift in Sources */,
 				1B0F787828A6546700AC2605 /* APIEnums.swift in Sources */,
 				1B0F785528A5185D00AC2605 /* UIViewController+Extension.swift in Sources */,

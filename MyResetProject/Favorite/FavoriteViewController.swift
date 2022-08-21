@@ -100,17 +100,18 @@ class FavoriteViewController: UIViewController {
             .bind { [weak self] (movieItem, indexPath) in
                 guard let self = self else { return }
                 self.favoriteView.favoriteTableView.deselectRow(at: indexPath, animated: true)
-                
                 //화면전환 -> Detail로
-                //화면전환 -> Detail로
-                let detailView = DetailView()
-                let detailViewModel = DetailViewModel(movie: DisplayMovie.convertDisplaymodel(movieItem: movieItem), databaseManager: RealmManager.shared)
-                let viewController = DetailViewController(view: detailView, viewModel: detailViewModel)
-                self.navigationController?.pushViewController(viewController, animated: true)
-                
+                NetworkMonitor.shared.isConnected ? self.presentDetail(movieItem: movieItem) : self.showNetworkAlertCheck(check: NetworkMonitor.shared.isConnected)
             }
             .disposed(by: disposeBag)
 
+    }
+    
+    func presentDetail(movieItem: MovieItem) {
+        let detailView = DetailView()
+        let detailViewModel = DetailViewModel(movie: DisplayMovie.convertDisplaymodel(movieItem: movieItem), databaseManager: RealmManager.shared)
+        let viewController = DetailViewController(view: detailView, viewModel: detailViewModel)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     private func tableViewConfig() {

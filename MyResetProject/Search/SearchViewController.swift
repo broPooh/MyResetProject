@@ -13,7 +13,7 @@ import SnapKit
 
 import RxAlamofire
 
-class SearchViewController: BaseViewController {
+class SearchViewController: UIViewController {
     
     private var searchView: SearchView
     private var viewModel: SearchViewModel
@@ -63,6 +63,8 @@ class SearchViewController: BaseViewController {
         navigationConfig()
         tableViewConfig()
         searchBarConfig()
+        
+        print(NetworkMonitor.shared.isConnected)
         //bind()
     }
     
@@ -127,7 +129,7 @@ class SearchViewController: BaseViewController {
         viewModel.searchInputText
             .distinctUntilChanged()
             .debounce(.seconds(SearchEnums.debounce), scheduler: MainScheduler.instance)
-            .filter { $0 != "" && self.checkNetworkValue }
+            .filter { $0 != "" && NetworkMonitor.shared.isConnected }
             .do(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 self.viewModel.isLoading.accept(true)
@@ -165,7 +167,7 @@ class SearchViewController: BaseViewController {
                 guard let self = self else { return ""}
                 return self.searchView.searchBar.text ?? ""
             }
-            .filter { $0 != "" }
+            .filter { $0 != "" && NetworkMonitor.shared.isConnected }
             .do(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 self.viewModel.isLoading.accept(true)
@@ -225,15 +227,18 @@ class SearchViewController: BaseViewController {
                  searchView.searchTableView.rx.itemSelected)
             .bind { [unowned self] (displayMovie, indexPath) in
                 self.searchView.searchTableView.deselectRow(at: indexPath, animated: true)
-                
                 //화면전환 -> Detail로
-                let detailView = DetailView()
-                let detailViewModel = DetailViewModel(movie: displayMovie, databaseManager: RealmManager.shared)
-                let viewController = DetailViewController(view: detailView, viewModel: detailViewModel)
-                navigationController?.pushViewController(viewController, animated: true)
+                NetworkMonitor.shared.isConnected ? presentDetail(displayMovie: displayMovie) : showNetworkAlertCheck(check: NetworkMonitor.shared.isConnected)
             }
             .disposed(by: disposeBag)
 
+    }
+    
+    func presentDetail(displayMovie: DisplayMovie) {
+        let detailView = DetailView()
+        let detailViewModel = DetailViewModel(movie: displayMovie, databaseManager: RealmManager.shared)
+        let viewController = DetailViewController(view: detailView, viewModel: detailViewModel)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
 
@@ -252,7 +257,7 @@ extension SearchViewController: UITableViewDataSourcePrefetching {
                 
                 
                 Observable.just(searchView.searchBar.text ?? "")
-                    .filter { $0 != "" }
+                    .filter { $0 != "" && NetworkMonitor.shared.isConnected }
                     .asSingle()
                     .flatMap { [weak self] text -> Single<MovieResult> in
                         self?.viewModel.isLoading.accept(true)
